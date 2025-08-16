@@ -1,10 +1,11 @@
-
+import { useState } from "react";
 
 function App() {
 
   return (
    
     <div style={{background: "#dfe6e9", height: "100vh"}}>
+      <ToggleMessage/>
       <div style={{display : "flex", justifyContent: "center"}}>
         <div>
           <div>
@@ -38,6 +39,20 @@ function App() {
 
 const style = { width: 200, backgroundColor: "white", borderRadius: 10, borderColor: "gray", borderWidth: 1 , padding: 20
 }
+
+const ToggleMessage = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setIsVisible(!isVisible)}>
+                Toggle Message
+            </button>
+            {isVisible && <p>This message is conditionally rendered!</p>}
+        </div>
+    );
+};
+
 
 function  PostComponent({name,subtitile,time,image, description}) {
   return <div style={style}>
